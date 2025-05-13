@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="A beautiful birthday surprise page with animations and special effects"/>
+  <meta name="theme-color" content="#ff9ecd"/>
+  <title>Birthday Surprise</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="particles-js"></div>
+
+  <div class="decorative-border">
+    <div class="corner top-left"></div>
+    <div class="corner top-right"></div>
+    <div class="corner bottom-left"></div>
+    <div class="corner bottom-right"></div>
+  </div>
+
+  <div class="floating-decorations">
+    <div class="butterfly left"></div>
+    <div class="butterfly right"></div>
+  </div>
+
+  <main class="container">
+    <header>
+      <h1 class="title english">Happy Birthday!</h1>
+      <h2 class="title urdu">سالگرہ مبارک ہو!</h2>
+    </header>
+
+    <section class="messages-wrapper">
+      <div class="messages">
+        <p>Ap ka Din muhabbat, mashkorah or khushiyon se bhar pur ho, or hameshah ya dua karta hu ke aap ki zandgi khushiyon se bhar jaye 🎉</p>
+        <div class="decorative-line"></div>
+        <p>Salgirah mubarak! Khuda kare yeh din aap ke liye khushiyon ka zariya ban jaye ✨</p>
+        <div class="decorative-line"></div>
+        <p>Aap ki salgirah bohat khaas ho, aur yeh din aap ki zindagi mein khushiyan le aaye 🌟</p>
+      </div>
+    </section>
+
+    <section class="image-frame">
+      <div class="image-container">
+        <img src="Cute.jpeg" alt="Birthday Person" class="main-image" loading="lazy" />
+      </div>
+    </section>
+    <button class="surprise-button" id="surpriseBtn" aria-label="Click for birthday surprise">
+      🎁 Click for a Surprise!
+      <div class="button-sparkle"></div>
+    </button>
+
+    <section class="cake-container" id="cakeContainer" aria-hidden="true">
+      <div class="cake">
+        <div class="cake-layers">
+          <div class="layer"></div>
+          <div class="layer"></div>
+          <div class="layer"></div>
+          <div class="icing"></div>
+          <div class="decorations">
+            <div class="flower"></div>
+            <div class="flower"></div>
+            <div class="flower"></div>
+          </div>
+        </div>
+        <div class="candle">
+          <div class="flame"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="surprise-message" id="surpriseMessage" aria-hidden="true">
+      <h3>🎉 Surprise! 🎉</h3>
+      <p>Salgirah mubark ho! min ap se atni muhabbat karta hon kah pagal ho jai gi isliye pare pass alfaz nihen hen. aap ki zandgi khushiyon or kamiyabiyon se bharpor ho. dua hay kah ya khaas dan hameshah yaadgar rahe.✨</p>
+    </section>
+  </main>
+
+  <div class="heart-cursor" id="heartCursor" aria-hidden="true"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script>
+    // Surprise Button Logic
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize particles background
+  particlesJS("particles-js", {
+    particles: {
+      number: { value: 50 },
+      color: { value: "#ffb6c1" },
+      shape: { type: "circle" },
+      opacity: {
+        value: 0.6,
+        random: true
+      },
+      size: {
+        value: 4,
+        random: true
+      },
+      move: {
+        enable: true,
+        speed: 2,
+        direction: "none",
+        random: true,
+        out_mode: "out"
+      },
+      line_linked: {
+        enable: false
+      }
+    }
+  });
+
+  // Animate titles on load
+  document.querySelectorAll('.title').forEach(title => {
+    title.classList.add('visible');
+  });
+
+  // Heart cursor animation
+  const heartCursor = document.getElementById('heartCursor');
+  document.addEventListener('mousemove', (e) => {
+    requestAnimationFrame(() => {
+      heartCursor.style.left = e.pageX + 'px';
+      heartCursor.style.top = e.pageY + 'px';
+    });
+  });
+
+  // Surprise button animation
+  const surpriseBtn = document.getElementById('surpriseBtn');
+  const cakeContainer = document.getElementById('cakeContainer');
+  const surpriseMessage = document.getElementById('surpriseMessage');
+
+  surpriseBtn.addEventListener('click', () => {
+    cakeContainer.classList.add('show');
+    surpriseMessage.style.display = 'block';
+    setTimeout(() => {
+      surpriseMessage.classList.add('show');
+    }, 100);
+
+    // Add confetti effect
+    createConfetti();
+  });
+});
+
+// Confetti animation
+function createConfetti() {
+  for (let i = 0; i < 50; i++) {
+    const confetti = document.createElement('div');
+    confetti.classList.add('confetti');
+    confetti.style.left = Math.random() * 100 + 'vw';
+    confetti.style.animationDelay = Math.random() * 3 + 's';
+    confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 75%)`;
+    document.body.appendChild(confetti);
+    
+    setTimeout(() => {
+      confetti.remove();
+    }, 3000);
+  }
+}
+  
+  </script>
+</body>
+</html>

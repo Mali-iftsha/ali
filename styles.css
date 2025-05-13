@@ -1,0 +1,455 @@
+:root {
+    --primary-color: #ff9ecd;
+    --secondary-color: #ffd1dc;
+    --accent-color1: #ffb7e3;
+    --accent-color2: #ffc8a2;
+    --accent-color3: #e2a6ff;
+    --gold-color: #ffd700;
+    --text-color: #4a4a4a;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --gradient-1: linear-gradient(135deg, #fff5f7, #ffe4e8);
+    --gradient-2: linear-gradient(45deg, var(--accent-color1), var(--accent-color2));
+    --gradient-3: linear-gradient(-45deg, var(--accent-color2), var(--accent-color3));
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 2rem;
+    font-family: 'Playfair Display', serif;
+    background: var(--gradient-1);
+    color: var(--text-color);
+    overflow-x: hidden;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 3;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+    gap: 3rem;
+}
+
+header {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.title {
+    width: 100%;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.messages-wrapper {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+}
+
+.messages {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.messages p {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Noto Nastaliq Urdu', serif;
+    font-size: 1.2rem;
+    line-height: 2;
+    padding: 2rem;
+    direction: rtl;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 120px;
+}
+
+.image-frame {
+    width: 100%;
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 25px;
+    box-shadow: 0 15px 35px var(--shadow-color);
+    transition: transform 0.3s ease;
+}
+
+.image-container {
+    width: 100%;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px var(--shadow-color);
+}
+
+.main-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.image-container:hover .main-image {
+    transform: scale(1.05);
+}
+
+.surprise-message {
+    width: 100%;
+    max-width: 700px;
+    margin: 2rem auto;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    padding: 2rem;
+}
+
+.surprise-message h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.surprise-message p {
+    font-family: 'Noto Nastaliq Urdu', serif;
+    font-size: 1.2rem;
+    line-height: 2;
+    direction: rtl;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 120px;
+}
+
+/* Border */
+.decorative-border {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border: 2px solid rgba(255, 182, 193, 0.3);
+    border-radius: 20px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.corner {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--accent-color1);
+    z-index: 2;
+}
+
+.top-left { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+.top-right { top: -2px; right: -2px; border-left: none; border-bottom: none; }
+.bottom-left { bottom: -2px; left: -2px; border-right: none; border-top: none; }
+.bottom-right { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+
+/* Layout Elements */
+.title.urdu {
+    font-size: 3.2rem;
+    margin-top: 0.5rem;
+}
+.title.english {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Messages */
+.decorative-line {
+    width: 80%;
+    height: 2px;
+    background: white;
+    margin: 1rem auto;
+    position: relative;
+    opacity: 0.7;
+}
+.decorative-line::before,
+.decorative-line::after {
+    content: '❀';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent-color1);
+    font-size: 1.2rem;
+}
+.decorative-line::before { left: -20px; }
+.decorative-line::after { right: -20px; }
+
+/* Image Frame */
+.image-frame:hover {
+    transform: translateY(-5px);
+}
+
+/* Surprise Button */
+.surprise-button {
+    position: relative;
+    padding: 1.2rem 2.5rem;
+    font-size: 1.3rem;
+    font-family: 'Dancing Script', cursive;
+    background: var(--gradient-2);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    overflow: hidden;
+    z-index: 4;
+    margin-top: 2rem;
+}
+
+.surprise-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px var(--shadow-color);
+    background: var(--gradient-3);
+}
+
+.button-sparkle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.3);
+    width: 100%;
+    height: 100%;
+    top: -100%;
+    left: 0;
+    pointer-events: none;
+    transition: all 0.5s ease;
+}
+.surprise-button:hover .button-sparkle {
+    top: 100%;
+}
+
+/* Cake Animation */
+.cake-container {
+    margin-top: 3rem;
+    opacity: 0;
+    transition: all 1s ease;
+}
+.cake-container.show {
+    opacity: 1;
+}
+
+.cake {
+    position: relative;
+    width: 200px;
+    height: 160px;
+    filter: drop-shadow(0 10px 20px var(--shadow-color));
+}
+
+.cake-layers {
+    position: relative;
+    height: 120px;
+}
+.layer {
+    position: absolute;
+    height: 40px;
+    background: var(--gradient-2);
+    border-radius: 10px;
+}
+.layer:nth-child(1) { width: 200px; bottom: 0; }
+.layer:nth-child(2) { width: 180px; left: 10px; bottom: 40px; }
+.layer:nth-child(3) { width: 160px; left: 20px; bottom: 80px; }
+
+.icing {
+    position: absolute;
+    top: -10px;
+    width: 100%;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+}
+
+.decorations .flower {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: var(--accent-color3);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+.decorations .flower:nth-child(1) { top: -5px; left: 30%; }
+.decorations .flower:nth-child(2) { top: -8px; left: 50%; }
+.decorations .flower:nth-child(3) { top: -5px; left: 70%; }
+
+.candle {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 30px;
+    background: linear-gradient(45deg, var(--accent-color1), var(--accent-color2));
+    border-radius: 4px;
+}
+
+.flame {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 16px;
+    background: var(--gold-color);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: flicker 0.5s ease-in-out infinite alternate;
+}
+@keyframes flicker {
+    0% { transform: translateX(-50%) scale(1); }
+    100% { transform: translateX(-50%) scale(1.2); }
+}
+
+/* Floating Butterflies */
+.floating-decorations {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+.butterfly {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: var(--accent-color1);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    animation: flutter 4s infinite ease-in-out;
+    z-index: 2;
+}
+.butterfly.left { left: 10%; top: 30%; }
+.butterfly.right { right: 10%; top: 70%; animation-delay: 2s; }
+
+@keyframes flutter {
+    0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+    25% { transform: translate(10px, -10px) rotate(10deg) scale(1.1); }
+    50% { transform: translate(0, 0) rotate(0deg) scale(1); }
+    75% { transform: translate(-10px, 10px) rotate(-10deg) scale(1.1); }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+    
+    .container {
+        padding: 1rem;
+        gap: 2rem;
+    }
+    
+    .messages-wrapper,
+    .surprise-message {
+        padding: 1.5rem;
+    }
+    
+    .messages p, 
+    .surprise-message p {
+        padding: 1.5rem;
+        font-size: 1.1rem;
+        min-height: 100px;
+    }
+    
+    .image-frame {
+        padding: 1rem;
+    }
+    
+    .title { font-size: 2.2rem; }
+    .title.urdu { font-size: 2.6rem; }
+    .image-container { max-width: 300px; }
+    .cake { transform: scale(0.8); }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.8rem;
+    }
+    
+    .messages p, 
+    .surprise-message p {
+        padding: 1rem;
+        font-size: 1rem;
+        min-height: 80px;
+    }
+    
+    .messages-wrapper,
+    .surprise-message {
+        padding: 1rem;
+    }
+    
+    .title.urdu { font-size: 2.2rem; }
+    .image-container { max-width: 250px; }
+}
+
+/* Confetti Animation */
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    top: -10px;
+    border-radius: 50%;
+    animation: fall 3s linear forwards;
+    z-index: 1000;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(720deg);
+    }
+}
+
+/* Heart Cursor */
+.heart-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: var(--accent-color1);
+    clip-path: path('M10,4 C10,4 8.5,0 5,0 C2.5,0 0,2.5 0,5 C0,7.5 2.5,10 5,10 C7.5,10 10,7.5 10,5');
+    transform: translate(-50%, -50%) rotate(45deg);
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease;
+}
